@@ -1,0 +1,46 @@
+<h1>USER DETAILS</h1>
+<style>
+    h1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+    .container {
+    margin-top: 80px;
+}table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+</style>
+<div class="container">
+    <table class="table table-bordered table-striped" >
+      <thead>
+      <tr>
+        <th>UserId</th>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Body</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let friend of friends | paginate: { id: 'listing_pagination',
+      itemsPerPage: 5,
+      currentPage: page,
+      totalItems: totalRec }">
+        <td><span>{{friend.userId}}</span></td>
+        <td><span>{{friend.id}}</span></td>
+        <td><span>{{friend.title}}</span></td>
+        <td><span>{{friend.body}}</span></td>
+      </tr>
+      </tbody>
+    </table>
+    <div>
+		<pagination-controls  id="listing_pagination" maxSize="5" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+	</div>
+  </div>
